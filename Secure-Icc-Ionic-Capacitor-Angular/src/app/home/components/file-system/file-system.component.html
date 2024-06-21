@@ -1,6 +1,6 @@
 <!--
 /*
-* Copyright 2022 BlackBerry Ltd.
+* Copyright 2024 BlackBerry Ltd.
 *
 * Licensed to the Apache Software Foundation (ASF) under one
 * or more contributor license agreements.  See the NOTICE file
@@ -25,21 +25,21 @@
   <h2 class="ion-padding-start">Secure Storage</h2>
 
   <div class="current-directory">
-    <h2 
-      *ngIf="isRoot" 
+    <h2
+      *ngIf="isRoot"
       class="ion-padding-start">
       root:
     </h2>
-    <h2 
-      *ngIf="!isRoot" 
+    <h2
+      *ngIf="!isRoot"
       class="ion-padding-start">
       {{currentDirectory.name}}:
     </h2>
   </div>
 
-  <ion-item 
+  <ion-item
     button
-    detail="false" 
+    detail="false"
     *ngIf="!isRoot"
     (click)="handleParentDirectory()">
     <p>
@@ -48,15 +48,16 @@
   </ion-item>
 
   <div *ngFor="let entry of currentDirectoryEntries; trackBy: trackByPath; let i = index">
-  
+
     <ion-item
-      button 
+      button
+      detail="false"
       class="folder-item"
       *ngIf="entry.isDirectory"
       (click)="openDirectoryByDirectoryEntry(entry)">
       <ion-icon
         class="folder-icon"
-        name="folder" 
+        name="folder"
         color="warning">
       </ion-icon>
       <p class="entry-name">{{entry.name}}</p>
@@ -67,9 +68,9 @@
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
-    
+
     <ion-item
-      button 
+      button
       class="file-item"
       detail="false"
       *ngIf="entry.isFile"
@@ -80,9 +81,8 @@
         color="dark">
       </ion-icon>
       <p class="entry-name">{{entry.name}}</p>
-      <ion-button 
+      <ion-button
         (click)="removeFile($event, entry)"
-        fill="outline"
         slot="end">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
